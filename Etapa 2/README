@@ -1,0 +1,34 @@
+            README
+    Nicolae Alexandru-Dimitrie 321CD
+
+Alg_Fermat.c: In acest fisier,am implementat algoritmul Fermat care primeste ca parametrii numarul care trebuie verificat daca este prim si un numar de iteratii.Intai am 
+realizat o functie ajutatoare cu numele de modulo1 ce ridica repetat la patrat un numar.Apoi am inceput implementarea algoritmului prin verificare ca numarul primit ca 
+parametru sa fie egal cu 1,in caz afirmativ se opreste executia programului si se returneaza 0,iar in caz contrar se utilizeaza un for de la 0 la numarul de iteratii in 
+care se alege un numar in mod aleator cu ajutorul functiei rand si se imparte cu MOD la predecesorul numarului primit ca parametru,iar la final se adauga 1,acest rezultat 
+este retinut intr-o variabila a.Ulterior,se apeleaza functia modulo1 cu parametrii a,p-1 si p,iar daca rezultatul acesteia este diferit de 1,inseamna ca numarul nu este 
+prim si se returneaza 0.In final, se returneaza 1,daca rezultatul functiei modulo 1 este 1.Aceasta implementare respecta formulele identificate in prima etapa.Pentru 
+realizarea intregului algoritm m-am inspirat de pe site-ul:https://www.sanfoundry.com/c-program-perform-fermat-primality-test/ .
+
+Alg_M-R.c: In acest fisier,am implementat algoritmul Miller-Rabin care primeste ca parametrii numarul care trebuie verificat daca este prim si un numar de iteratii.Initial,
+am realizat o functie care calculeaza produsul a doua numer MOD al treilea,in cazul in care produsul se poate supraincarca.Apoi,am realizat o functie identica cu cea din 
+algoritmul Fermat pe care am numit-o modulo2.Dupa implementarea acestor functii,ajutatoare am trecut la implementarea algoritmului.Am inceput cu verificarea daca numarul 
+este mai mic ca 2,in caz afirmativ se returneaza 0.Apoi,am verificat daca numarulm este diferit de 2 si este par,atunci se retruneaza 0.Dupa aceea,se ia o variabila s in
+care se retine predecesorul numarului primit ca parametru.Apoi,se elimina factorii de 2 din descompunerea in factori primi ai lui s.Dupa se utilizeaza un for de la 0 la 
+numarul de iteratii,in care se alege un numar aleator cu functia rand,si se formeaza un numar a exact ca in testul Fermat.Apoi,se ia o variabila auxiliara in care i se
+face o copie lui s,iar intr-o variabila mod se retine rezultatul functiei modulo2 apelata cu parametrii a,copia lui s si numarul ce trebuie testat daca este prim.Dupa,
+se apeleaza functia mulmod cu parametrii mod,mod si numarul ce trebuie verificat daca este prim.Ulterior,se verifica conditiile pentru care algoritmul nu respecta formula 
+si implicit returneaza 0.In final, se returneaza 1 dupa ce s-a parcurs tot algoritmul.Aceasta implementare respecta formulele identificate in prima etapa.Pentru realizarea
+intregului algoritm m-am inspirat de pe site-ul: https://www.sanfoundry.com/c-program-implement-rabin-miller-primality-test-check-number-prime/ .
+
+Alg.h: In acest fisier este prezent setul de functii care rezolva problema.
+
+Alg_test.c: Acest fisier contine main-ul programului, unde am citit datele din fisierele de intrare, le-am prelucrat si le-am scris in fisierele de iesire.
+Folderul in contine fisierele de input unde am generat diferite teste neunice pentru fiecare algoritm. Pe prima linie din fiecare fisier este numarul de numere pe 
+care le verific daca sunt prime , iar pe a doua linie este setul de numere cu spatiu intre ele.
+Testele au numere Carmichael care nu sunt prime,dar pot trece ca prime in urma algoritmului Fermat,depinzand de numarul de iteratii,numere pseudoprime,numere mai mici si 
+numere mai mari.
+Folderul de output contine datele prelucrate,pe prima linie,fiind numerele care au trecut testul de primalitate cu spatiu intre ele,iar pe a doua linie numarul acestora.
+Pentru compilare se foloseste regula make in urma careia vor rezulta doua executabile numite "test1",pentru algoritmul Fermat,respectiv "test2" pentru algoritmul Miller-Rabin.
+Rularea se face cu ajutorul executabilului ./test1,respectiv ./test2. De asemenea,am cate o regula pentru fiecare algoritm make run-p1 pentru Fermat,make run-p2 pentru Miller-
+Rabin.In plus,am comparat timpii de executie pentru fiecare test folosind biblioteca "time.h" si functia clock() pentru a stabili care algoritm este mai eficient din punct
+de vedere al timpului,si anume p1,pentru a-l rula si cu regula make run-best.
